@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  gestorventas_backend:
+    image: ${DOCKER_REGISTRY-}gestorventasbackend
+    build:
+      context: .
+      dockerfile: GestorVentas_Backend/Dockerfile
