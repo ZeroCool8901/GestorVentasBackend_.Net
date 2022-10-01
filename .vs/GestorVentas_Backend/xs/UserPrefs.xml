@@ -1,16 +1,25 @@
 ﻿<Properties StartupConfiguration="{5CD539DD-EBD0-4588-A759-5F2B50AD658F}|Default">
-  <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.GestorVentas__Backend PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GestorVentas_Backend/Program.cs">
+  <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="GestorVentas_Backend/Controllers/ClientsController.cs">
     <Files>
-      <File FileName="GestorVentas_Backend/Program.cs" Line="29" Column="37" />
+      <File FileName="GestorVentas_Backend/Program.cs" Line="36" Column="1" />
+      <File FileName="GestorVentas_Backend/Controllers/ClientsController.cs" Line="1" Column="5" />
+      <File FileName="GestorVentas_Backend/Models/Client.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GestorVentas_Backend" expanded="True">
             <Node name="GestorVentas_Backend" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -20,10 +29,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.GestorVentas__Backend PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
