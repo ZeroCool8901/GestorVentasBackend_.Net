@@ -7,7 +7,7 @@ namespace GestorVentas_Backend.Models
     {
         public Client()
         {
-           
+            Sales = new HashSet<Sale>();
         }
 
         public int IdClient { get; set; }
@@ -18,5 +18,6 @@ namespace GestorVentas_Backend.Models
         public string IdentificationType { get; set; } = null!;
         public string IdentificationNumber { get; set; } = null!;
 
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }

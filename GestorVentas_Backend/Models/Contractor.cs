@@ -7,7 +7,8 @@ namespace GestorVentas_Backend.Models
     {
         public Contractor()
         {
-            
+            BankAccounts = new HashSet<BankAccount>();
+            Sales = new HashSet<Sale>();
         }
 
         public int IdContractor { get; set; }
@@ -16,6 +17,8 @@ namespace GestorVentas_Backend.Models
         public string Cel { get; set; } = null!;
         public int IdUser { get; set; }
 
- 
+        public virtual User IdUserNavigation { get; set; } = null!;
+        public virtual ICollection<BankAccount> BankAccounts { get; set; }
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }

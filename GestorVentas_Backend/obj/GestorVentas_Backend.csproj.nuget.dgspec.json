@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andres\\Documents\\GestorVentasBackend\\GestorVentas_Backend\\GestorVentas_Backend.csproj": {}
+    "C:\\Users\\Juan C\\Documents\\ProgramacionIV\\Proyecto\\Backend\\GestorVentas_Backend\\GestorVentas_Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andres\\Documents\\GestorVentasBackend\\GestorVentas_Backend\\GestorVentas_Backend.csproj": {
+    "C:\\Users\\Juan C\\Documents\\ProgramacionIV\\Proyecto\\Backend\\GestorVentas_Backend\\GestorVentas_Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andres\\Documents\\GestorVentasBackend\\GestorVentas_Backend\\GestorVentas_Backend.csproj",
+        "projectUniqueName": "C:\\Users\\Juan C\\Documents\\ProgramacionIV\\Proyecto\\Backend\\GestorVentas_Backend\\GestorVentas_Backend.csproj",
         "projectName": "GestorVentas_Backend",
-        "projectPath": "C:\\Users\\Andres\\Documents\\GestorVentasBackend\\GestorVentas_Backend\\GestorVentas_Backend.csproj",
-        "packagesPath": "C:\\Users\\Andres\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andres\\Documents\\GestorVentasBackend\\GestorVentas_Backend\\obj\\",
+        "projectPath": "C:\\Users\\Juan C\\Documents\\ProgramacionIV\\Proyecto\\Backend\\GestorVentas_Backend\\GestorVentas_Backend.csproj",
+        "packagesPath": "C:\\Users\\Juan C\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Juan C\\Documents\\ProgramacionIV\\Proyecto\\Backend\\GestorVentas_Backend\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Andres\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Juan C\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,10 +55,6 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.8, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.8, )"
             },

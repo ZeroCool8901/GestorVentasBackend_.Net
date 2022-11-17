@@ -7,7 +7,7 @@ namespace GestorVentas_Backend.Models
     {
         public User()
         {
-            
+            Contractors = new HashSet<Contractor>();
         }
 
         public int IdUser { get; set; }
@@ -18,5 +18,6 @@ namespace GestorVentas_Backend.Models
         public string? Email { get; set; }
         public string? Password { get; set; }
 
+        public virtual ICollection<Contractor> Contractors { get; set; }
     }
 }

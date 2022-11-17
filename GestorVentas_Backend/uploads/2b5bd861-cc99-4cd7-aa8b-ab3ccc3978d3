@@ -1,0 +1,119 @@
+using GestorVentas_Backend.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace GestorVentas_Backend.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ArchivoController : ControllerBase
+    {
+        private readonly GestorVentasContext _context;
+
+        public ArchivoController(GestorVentasContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/Clients
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Archivo>>> GetArchivo()
+        {
+            if (_context.Archivos == null)
+            {
+                return NotFound();
+            }
+            return await _context.Archivos.ToListAsync();
+        }
+
+        // GET: api/Archivos/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Archivo>> GetArchivo(int id)
+        {
+            if (_context.Archivos == null)
+            {
+                return NotFound();
+            }
+            var archivo = await _context.Archivos.FindAsync(id);
+
+            if (archivo == null)
+            {
+                return NotFound();
+            }
+
+            return archivo;
+        }
+
+        // PUT: api/Archivos/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutArchivo(int id, Archivo archivo)
+        {
+            if (id != archivo.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(archivo).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ArchivoExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/Archivos
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Archivo>> PostClient(Archivo archivo)
+        {
+            if (_context.Archivos == null)
+            {
+                return Problem("Entity set 'GestorVentasContext.Clients'  is null.");
+            }
+            _context.Archivos.Add(archivo);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetArchivo", new { id = archivo.Id }, archivo);
+        }
+
+        // DELETE: api/Archivos/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteArchivo(int id)
+        {
+            if (_context.Archivos == null)
+            {
+                return NotFound();
+            }
+            var archivo = await _context.Archivos.FindAsync(id);
+            if (archivo == null)
+            {
+                return NotFound();
+            }
+
+            _context.Archivos.Remove(archivo);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool ArchivoExists(int id)
+        {
+            return (_context.Archivos?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+    }
+}

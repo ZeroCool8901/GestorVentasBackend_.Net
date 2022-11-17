@@ -16,8 +16,10 @@ namespace GestorVentas_Backend.Models
         {
         }
 
+        public virtual DbSet<Archivo> Archivos { get; set; } = null!;
         public virtual DbSet<Article> Articles { get; set; } = null!;
         public virtual DbSet<BankAccount> BankAccounts { get; set; } = null!;
+        public virtual DbSet<Campaign> Campaigns { get; set; } = null!;
         public virtual DbSet<Client> Clients { get; set; } = null!;
         public virtual DbSet<Contractor> Contractors { get; set; } = null!;
         public virtual DbSet<Sale> Sales { get; set; } = null!;
@@ -29,12 +31,31 @@ namespace GestorVentas_Backend.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=localhost,1433; Database=GestorVentas;User=SA;Password=<Zero2022*.>");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-4KTENEF\\SQLEXPRESS; Database=GestorVentas;Trusted_Connection=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Archivo>(entity =>
+            {
+                entity.Property(e => e.Extension)
+                    .HasMaxLength(5)
+                    .IsUnicode(false)
+                    .HasColumnName("extension");
+
+                entity.Property(e => e.Nombre)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nombre");
+
+                entity.Property(e => e.Tamanio).HasColumnName("tamanio");
+
+                entity.Property(e => e.Ubicacion)
+                    .HasColumnType("text")
+                    .HasColumnName("ubicacion");
+            });
+
             modelBuilder.Entity<Article>(entity =>
             {
                 entity.HasKey(e => e.IdArticle);
@@ -87,6 +108,30 @@ namespace GestorVentas_Backend.Models
                     .IsUnicode(false)
                     .HasColumnName("number");
 
+                entity.HasOne(d => d.IdContractorNavigation)
+                    .WithMany(p => p.BankAccounts)
+                    .HasForeignKey(d => d.IdContractor)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_BankAccount_Contractor");
+            });
+
+            modelBuilder.Entity<Campaign>(entity =>
+            {
+                entity.HasKey(e => e.IdCampaign);
+
+                entity.ToTable("Campaign");
+
+                entity.Property(e => e.IdCampaign)
+                    .ValueGeneratedNever()
+                    .HasColumnName("Id_Campaign");
+
+                entity.Property(e => e.Campaign1)
+                    .HasMaxLength(50)
+                    .HasColumnName("Campaign");
+
+                entity.Property(e => e.InterestRate)
+                    .HasColumnType("decimal(18, 0)")
+                    .HasColumnName("Interest_rate");
             });
 
             modelBuilder.Entity<Client>(entity =>
@@ -153,6 +198,11 @@ namespace GestorVentas_Backend.Models
                     .IsUnicode(false)
                     .HasColumnName("nit");
 
+                entity.HasOne(d => d.IdUserNavigation)
+                    .WithMany(p => p.Contractors)
+                    .HasForeignKey(d => d.IdUser)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Contractor_User");
             });
 
             modelBuilder.Entity<Sale>(entity =>
@@ -189,7 +239,29 @@ namespace GestorVentas_Backend.Models
                     .HasColumnType("money")
                     .HasColumnName("price");
 
+                entity.HasOne(d => d.IdArticleNavigation)
+                    .WithMany(p => p.Sales)
+                    .HasForeignKey(d => d.IdArticle)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Sale_Article");
 
+                entity.HasOne(d => d.IdClientNavigation)
+                    .WithMany(p => p.Sales)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Sale_Client");
+
+                entity.HasOne(d => d.IdContractorNavigation)
+                    .WithMany(p => p.Sales)
+                    .HasForeignKey(d => d.IdContractor)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Sale_Contractor");
+
+                entity.HasOne(d => d.IdServiceNavigation)
+                    .WithMany(p => p.Sales)
+                    .HasForeignKey(d => d.IdService)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Sale_Service");
             });
 
             modelBuilder.Entity<Service>(entity =>

@@ -7,7 +7,7 @@ namespace GestorVentas_Backend.Models
     {
         public Article()
         {
-            
+            Sales = new HashSet<Sale>();
         }
 
         public int IdArticle { get; set; }
@@ -17,5 +17,6 @@ namespace GestorVentas_Backend.Models
         public int Cant { get; set; }
         public int SerialNumber { get; set; }
 
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }
